@@ -12,6 +12,14 @@ import UIKit
 /// Serves as a configuration relay controller, tapping into the main window's rootViewController settings.
 internal class WindowRootViewController: UIViewController {
 
+    private var keyWindow: UIWindow? {
+        UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .filter { $0.activationState == .foregroundActive }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+    }
+
     internal override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if let rootViewController = UIApplication.shared.delegate?.window??.rootViewController {
             return rootViewController.supportedInterfaceOrientations
@@ -23,7 +31,7 @@ internal class WindowRootViewController: UIViewController {
     internal override var preferredStatusBarStyle: UIStatusBarStyle {
         if let presentingViewController = presentingViewController {
             return presentingViewController.preferredStatusBarStyle
-        } else if let rootViewController = UIApplication.shared.delegate?.window??.rootViewController {
+        } else if let rootViewController = keyWindow?.rootViewController {
             return rootViewController.preferredStatusBarStyle
         } else {
             return .default
@@ -32,7 +40,7 @@ internal class WindowRootViewController: UIViewController {
     internal override var prefersStatusBarHidden: Bool {
         if let presentingViewController = presentingViewController {
             return presentingViewController.prefersStatusBarHidden
-        } else if let rootViewController = UIApplication.shared.delegate?.window??.rootViewController {
+        } else if let rootViewController = keyWindow?.rootViewController {
             return rootViewController.prefersStatusBarHidden
         } else {
             return false
