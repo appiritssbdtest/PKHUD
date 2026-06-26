@@ -21,7 +21,7 @@ internal class WindowRootViewController: UIViewController {
     }
 
     internal override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if let rootViewController = UIApplication.shared.delegate?.window??.rootViewController {
+        if let rootViewController = keyWindow?.rootViewController {
             return rootViewController.supportedInterfaceOrientations
         } else {
             return UIInterfaceOrientationMask.portrait
@@ -48,7 +48,7 @@ internal class WindowRootViewController: UIViewController {
     }
 
     internal override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        if let rootViewController = UIApplication.shared.delegate?.window??.rootViewController {
+        if let rootViewController = keyWindow?.rootViewController {
             return rootViewController.preferredStatusBarUpdateAnimation
         } else {
             return .none
@@ -56,7 +56,7 @@ internal class WindowRootViewController: UIViewController {
     }
 
     internal override var shouldAutorotate: Bool {
-        if let rootViewController = UIApplication.shared.delegate?.window??.rootViewController {
+        if let rootViewController = keyWindow?.rootViewController {
             return rootViewController.shouldAutorotate
         } else {
             return false
