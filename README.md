@@ -1,3 +1,7 @@
+このリポジトリは [pkluz/PKHUD](https://github.com/pkluz/PKHUD) からフォークしたものです。
+iOS 13以降で非推奨となった `UIApplication.shared` 周りの警告を修正したバージョンとなります。
+
+
 [![Build Status](https://travis-ci.org/pkluz/PKHUD.svg?branch=master)](https://travis-ci.org/pkluz/PKHUD)
 [![License](https://img.shields.io/cocoapods/l/PKHUD.svg?style=flat)](https://cocoapods.org/pods/PKHUD) 
 [![Platform](https://img.shields.io/cocoapods/p/PKHUD.svg?style=flat)](http://cocoadocs.org/docsets/PKHUD/3.2.1/) 
